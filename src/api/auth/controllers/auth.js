@@ -5,8 +5,16 @@ module.exports = {
       ctx.cookies.set('jwt', null, {
         httpOnly: true,
         secure: false, // true إذا كنت بتستخدم HTTPS
-        sameSite: 'none', // أو حسب إعداداتك
+        sameSite: 'lax', // أو حسب إعداداتك
         expires: new Date(0), // تاريخ منتهي للحذف
+      });
+
+      ctx.cookies.set('jwt.sig', '', {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'lax',
+        expires: new Date(0),
+        path: '/',
       });
 
       return ctx.send({

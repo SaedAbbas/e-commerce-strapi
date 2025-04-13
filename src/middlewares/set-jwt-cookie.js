@@ -9,17 +9,26 @@ module.exports = (config, { strapi }) => {
       ctx.cookies.set('jwt', null, {
         httpOnly: true,
         secure: false , // true إذا كنت بتستخدم HTTPS
-        sameSite: 'none',
+        sameSite: 'lax',
         expires: new Date(0), // تاريخ منتهي للحذف
       });
 
       ctx.cookies.set('jwt.sig', '', {
         httpOnly: true,
         secure: false,
-        sameSite: 'none',
+        sameSite: 'lax',
         expires: new Date(0),
         path: '/',
       });
+
+      ctx.cookies.set('jwt.sig.sig', '', {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'lax',
+        expires: new Date(0),
+        path: '/',
+      });
+      
 
       ctx.response.status = 200;
       ctx.response.body = { message: 'Logged out successfully' };
@@ -46,7 +55,7 @@ module.exports = (config, { strapi }) => {
           ctx.cookies.set('jwt', jwt, {
             httpOnly: true,
             secure: false, // ← مهم حتى لو شغال على localhost
-            sameSite: 'none', // ← عشان تتقبل في cross-origin
+            sameSite: 'lax', // ← عشان تتقبل في cross-origin
             maxAge: 1000 * 60 * 60 * 24 * 7, // أسبوع
             path: '/',
             signed: false,
