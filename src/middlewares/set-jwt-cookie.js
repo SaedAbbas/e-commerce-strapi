@@ -38,9 +38,10 @@ module.exports = (config, { strapi }) => {
 
       // فقط نفذ الكود ده لو الريكويست راجع من /api/auth/local
       if (
-        (ctx.request.url === '/api/auth/local' || ctx.request.url === '/api/auth/local/register') &&
+        (ctx.request.url.startsWith('/api/auth/local') || ctx.request.url.startsWith('/api/auth/local/register')) &&
         ctx.response.status === 200
       )
+      
        {
         try {
           const jwt = ctx.body?.jwt;
