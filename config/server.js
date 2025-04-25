@@ -8,7 +8,7 @@ module.exports = ({ env }) => ({
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
   cors: {
-    origin: ['http://localhost:3000'], // عنوان Next.js المحلي
+    origin: ['http://localhost:3000','https://e-commerce-nextjs-90p6e3ki9-saed-abbas-projects.vercel.app/'], // عنوان Next.js المحلي
     credentials: true, // تفعيل الكوكيز عبر CORS
   },
 });

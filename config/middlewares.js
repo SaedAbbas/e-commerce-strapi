@@ -15,7 +15,7 @@ module.exports = [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      origin: ['http://localhost:3000'], // أضف دومين الإنتاج هنا
+      origin: ['http://localhost:3000','https://e-commerce-nextjs-90p6e3ki9-saed-abbas-projects.vercel.app/'], // أضف دومين الإنتاج هنا
       credentials: true,
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
